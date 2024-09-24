@@ -1,0 +1,17 @@
+Convertir les nombres décimaux suivants en nombres binaires codés sur un octet
+
+54 = 0011 0110
+225 = 0111 1101
+109 = 0110 1101
+
+Convertir les nombres binaires suivants en décimal
+
+101 = 5
+0110 0011 = 99
+1111 1110 = 254
+
+Convertir les nombres hexa suivants en décimal signé
+
+0x7E = 126
+0x81 = -127
+0xFE = -2
