@@ -21,7 +21,6 @@
 #     Afficher "Vous avez gagné"
 # FIN
 
-
 print("Resultat algo 6.2")
 
 def loop_user():
@@ -218,6 +217,47 @@ loop_number()
 
 print("Resultat algo 6.6")
 
+def count(somme):
+    print(f"Vous devez {somme} e")
+
+    client = input("Entrez ce que vous donnez")
+
+    if client:
+        try:
+            client = int(client)
+
+            if client < somme:
+                print("Veuillez donner un montant correct")
+                count(somme)
+
+            remise = client - somme
+            print(f"Vous devez rendre {remise} e")   
+        except:
+            print("Entrez un nombre")
+    else:
+        print("user input not found")
+
+def caisse():
+    somme = 0
+
+    while True:
+        product_price = input("Prix de l'article")
+
+        if product_price.strip() == 0:
+            break
+
+        if product_price:
+            try:
+                product_price = int(product_price)
+                somme += product_price
+            except:
+                print("Entrez un nombre")
+        else:
+            print("user input not found")
+
+    count(somme)
+
+caisse()
 
 # 6.7
 # Ecrire un algorithme qui demande successivement des nombres à l’utilisateur, et qui
