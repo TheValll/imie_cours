@@ -40,7 +40,7 @@ def multiplication():
 
             for i in range(11):
                 print(f"{a} x {i} = {a*i}")
-        except:
+        except ValueError:
             print("Le format de vos saisies sont incorrect entrez des nombres")
             multiplication()
     else:

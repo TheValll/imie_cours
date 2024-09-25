@@ -34,7 +34,7 @@ def loop_user():
             
             try:
                 value = int(user_input)
-            except:
+            except ValueError:
                 print("Entrez un nombre correct")
         else:
             print("user input no found")
@@ -149,7 +149,7 @@ def get_leap_year():
 
             get_leap_year()
 
-        except:
+        except ValueError:
             print("Le format de vos saisies sont incorrect entrez un nombre")
             get_leap_year()
     else:
@@ -200,7 +200,7 @@ def loop_number():
                     print(i, result)
 
                 print(f"Le nombre final est {result}")
-            except:
+            except ValueError:
                 print("Le format de vos saisies sont incorrect entrez un nombre")
                 loop_number()
         else:
@@ -218,9 +218,9 @@ loop_number()
 print("Resultat algo 6.6")
 
 def count(somme):
-    print(f"Vous devez {somme} e")
+    print(f"Vous devez {somme} euros")
 
-    client = input("Entrez ce que vous donnez")
+    client = input("Entrez ce que vous donne le client : ")
 
     if client:
         try:
@@ -228,36 +228,53 @@ def count(somme):
 
             if client < somme:
                 print("Veuillez donner un montant correct")
-                count(somme)
+                count(somme) 
+            else:
+                remise = client - somme
+                print(f"Vous devez rendre {remise} euros")
+                money_back(remise)
 
-            remise = client - somme
-            print(f"Vous devez rendre {remise} e")   
-        except:
-            print("Entrez un nombre")
+        except ValueError:
+            print("Entrez un nombre valide")
     else:
         print("user input not found")
 
+def money_back(remise):
+    billets_pieces = [200, 100, 50, 20, 10, 5, 2, 1] 
+    rendu = {}
+
+    for billet in billets_pieces:
+        if remise >= billet:
+            quantite = remise // billet
+            rendu[billet] = quantite
+            remise -= billet * quantite
+
+    for billet, quantite in rendu.items():
+        print(f"{quantite} x {billet} euros")
+
 def caisse():
     somme = 0
+    stop = False
 
-    while True:
-        product_price = input("Prix de l'article")
+    while stop:
+        product_price = input("Prix de l'article : ")
 
-        if product_price.strip() == 0:
-            break
+        if product_price.strip() == "0":
+            stop = True
 
         if product_price:
             try:
                 product_price = int(product_price)
                 somme += product_price
-            except:
-                print("Entrez un nombre")
+            except ValueError:
+                print("Entrez un nombre valide")
         else:
             print("user input not found")
 
     count(somme)
 
 caisse()
+
 
 # 6.7
 # Ecrire un algorithme qui demande successivement des nombres à l’utilisateur, et qui
@@ -301,8 +318,9 @@ print("Resultat algo 6.7")
 def get_high_number():
 
     list = []
+    stop = False
 
-    while True:
+    while stop:
         user_input = input("Entrz un nombre")
 
         if user_input:
@@ -311,8 +329,8 @@ def get_high_number():
                 list.append(user_input)
 
                 if user_input == 0:
-                    break
-            except:
+                    stop =  True
+            except ValueError:
                 print("Entrez un nombre correct")
         else:
             print("user input not found")

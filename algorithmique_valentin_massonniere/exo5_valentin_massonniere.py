@@ -51,7 +51,7 @@ def get_product_sign():
                 print("Le produit des deux nombres est négatif")
             else:
                 print("Le produit des deux nombres est positif")
-        except:
+        except ValueError:
             print("Le format de vos saisies sont incorrect entrez des nombres")
             get_product_sign()
     else:
@@ -101,7 +101,7 @@ def check_alphabetic_order():
                 print("Les noms sont dans l'ordre alphabétique")
             else:
                 print("Les noms ne sont pas dans l'ordre alphabétique")
-        except:
+        except ValueError:
             print("Le format de vos saisies sont incorrect entrez des noms")
             check_alphabetic_order()
     else:
@@ -175,7 +175,7 @@ def get_cinema_ticket_price():
             price = round(price,2)
 
             print(f"Le prix est de {price} e")
-        except:
+        except ValueError:
             print("Le format de vos saisies sont incorrect entrez un nombre ou insérer Y ou N pour indiquer si vous avez la carte du cinéma")
             get_cinema_ticket_price()
     else:
@@ -236,7 +236,7 @@ def get_leap_year():
             else:
                 print("L'année n'est pas bissextile")
 
-        except:
+        except ValueError:
             print("Le format de vos saisies sont incorrect entrez un nombre")
             get_leap_year()
     else:
@@ -372,7 +372,7 @@ def get_invoice():
 
             print(round(invoice, 2))
 
-        except:
+        except ValueError:
             print("Le format de vos saisies est incorrect entrez un nombre")
             get_invoice()
     else:
@@ -490,7 +490,7 @@ def get_conamo_sexe_age():
 
             return taxable, rate
 
-        except:
+        except ValueError:
             print("Le format de vos saisies sont incorrect entrez un nombre et indiquer M ou F pour votre sexe")
             get_conamo_sexe_age()
     else:
@@ -511,7 +511,7 @@ def get_taxable():
                 salary = int(salary)
                 taxe_value = get_taxe_value(salary, rate)
                 print(f"La valeur de votre impôt est de {taxe_value} e")
-            except:
+            except ValueError:
                 print("Le format de vos saisies sont incorrect entrez un nombre")
                 get_taxable()
         else: 
@@ -617,7 +617,7 @@ def get_assurance_price():
                 print("Vous êtes éligible au tarif orange" if accidents == 0 else "Vous êtes éligible au tarif rouge")
             elif age >= 25 and since >= 2:
                 print("Vous êtes éligible au tarif vert" if accidents == 0 else "Vous êtes éligible au tarif orange")
-        except:
+        except ValueError:
             print("Le format de vos saisies sont incorrect entrez les valeurs correctement")
             get_assurance_price()
 

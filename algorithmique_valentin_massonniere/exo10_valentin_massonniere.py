@@ -10,12 +10,13 @@
 print("Resultat algo 9.2")
 
 def annulaire():
+    stop = False
 
-    while True:
+    while stop:
         name = input("Entrez un nom")
 
         if name.strip() == '':
-            return
+            stop = True
         
         phone = input("Entrez un numéro")
             
@@ -28,9 +29,9 @@ def annulaire():
                 with open("annulaire.txt", "a") as f:
                     f.write(line)
                 print("Données mises à jour")
-            except:
+            except ValueError:
                 print("Une erreur est survenue")
-                return
+                stop = True
         else:
             print("user input not found")
 

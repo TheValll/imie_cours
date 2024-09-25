@@ -41,7 +41,7 @@ def lotery():
 
             print(f"Dans l’ordre : une chance sur {round(X,0)} de gagner")
             print(f"Dans le désordre : une chance sur {round(Y,0)} de gagner")
-        except:
+        except ValueError:
             print("Entrez des nombres correct")
             lotery()
     else:

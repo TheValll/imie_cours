@@ -37,7 +37,7 @@ def list_user():
             try:
                 user_input = int(user_input)
                 list.append(user_input)
-            except:
+            except ValueError:
                 print("Entrez un nombre correct")
                 list_user()
         else:
@@ -144,7 +144,7 @@ def school_notes():
             }
             classe.append(student_data)
             print("Enregistré !")
-        except:
+        except ValueError:
             print("Entrez un nombre valide pour les notes.")
     else:
         print("Aucune entrée trouvée.")

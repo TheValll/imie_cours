@@ -32,7 +32,7 @@ def square_number():
         try:
             result = pow(int(user_input1),2)
             print(result)
-        except:
+        except ValueError:
             print("Ceci n'est pas un nombre")
             square_number()
     else:
@@ -57,7 +57,7 @@ def calculate_ttc():
         try:
             result = round((int(ht_price) * int(tva_rate) / 100) * int(nb_article), 2)
             print(f"Le prix total est de {result} e")
-        except:
+        except ValueError:
             print("Le format de vos saisies sont incorrect entrez des nombres")
             calculate_ttc()
     else:
