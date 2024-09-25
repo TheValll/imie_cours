@@ -29,6 +29,7 @@ public static void exo4_2_2() {
    Scanner user_input = new Scanner(System.in);
    System.out.println("Entrez un nombre");
    String user_number = user_input.nextLine();
+   user_input.close();
 
    try {
     int number = Integer.valueOf(user_number);
