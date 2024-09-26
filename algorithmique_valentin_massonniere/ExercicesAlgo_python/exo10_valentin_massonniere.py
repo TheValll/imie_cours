@@ -21,7 +21,7 @@ def annulaire():
         phone = input("Entrez un numéro")
             
         if name and phone:
-            line = f"Name : {name}, Phone : {phone} \n"
+            line = f"Name : {name}; Phone : {phone} \n"
             name = ""
             phone = ""
 
