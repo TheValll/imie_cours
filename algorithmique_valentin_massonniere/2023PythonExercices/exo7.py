@@ -4,14 +4,15 @@ import xlsxwriter
 
 def get_data(file_url):
     try:
-        with codecs.open(file_url, mode='r', encoding='utf-8') as inputFile:
-            data = inputFile.readlines() 
-            return data
+        with codecs.open(file_url, mode='r', encoding='utf-16') as inputFile:
+            data = inputFile.readlines()
+            header = data[0]
+            return header, data[1:] 
     except FileNotFoundError:
         print("FileNotFoundError: No such file or directory")
     except UnicodeError:
         print("UnicodeError: UTF-16 stream does not start with BOM")
-    return []
+    return "", []
 
 def parse_line(line):
     date_string, float_value, int_value = line.strip().split(';')
@@ -43,16 +44,17 @@ def check_and_fill_dates(data):
 
     return filled_data
 
-def replace_date_file(file_url, filled_data):
+def replace_date_file(file_url, header, filled_data):
     try:
         workbook = xlsxwriter.Workbook(file_url)
         worksheet = workbook.add_worksheet()
         bold = workbook.add_format({"bold": True})
+        worksheet.write(header)
+        worksheet.write(filled_data)
     except Exception as e:
-        print(e)
+        print(f"Une erreur est survenue : {e}")
 
-
-data = get_data("algorithmique_valentin_massonniere/2023PythonExercices/DataExo5.txt")
+header, data = get_data("algorithmique_valentin_massonniere/2023PythonExercices/DataExo5_bis.txt")
 if data:
     filled_data = check_and_fill_dates(data)
-    replace_date_file("algorithmique_valentin_massonniere/2023PythonExercices/DataExo7Out.xlsx", filled_data)
+    replace_date_file("algorithmique_valentin_massonniere/2023PythonExercices/DataOutExo7.xlsx", header, filled_data)
