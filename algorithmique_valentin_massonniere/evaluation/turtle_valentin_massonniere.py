@@ -13,6 +13,9 @@ class Triangle:
         except ValueError:
             print("Veuillez entrer un nombre")
             return
+        except Exception as e:
+            print(f"Une erreur est survenue avec Turtle : {e}")
+            return
         
     @staticmethod
     def triangle2(a):
@@ -25,7 +28,10 @@ class Triangle:
             return
         except ValueError as v:
             print(f"Une erreur est survenue : {v} : Veuillez entrer un nombre")
-            return   
+            return 
+        except Exception as e:
+            print(f"Une erreur est survenue avec Turtle : {e}")
+            return  
 
     @staticmethod
     def triangle3(a, angle):
@@ -39,6 +45,9 @@ class Triangle:
             return
         except ValueError as v:
             print(f"Une erreur est survenue : {v} : Veuillez entrer un nombre")
+            return
+        except Exception as e:
+            print(f"Une erreur est survenue avec Turtle : {e}")
             return
     
     @staticmethod
@@ -59,6 +68,9 @@ class Triangle:
         except ValueError as v:
             print(f"Une erreur est survenue : {v} : Veuillez entrer un nombre")
             return
+        except Exception as e:
+            print(f"Une erreur est survenue avec Turtle : {e}")
+            return
         
 
 class Sqaure:
@@ -71,6 +83,9 @@ class Sqaure:
                 left(90)
         except ValueError as v:
             print(f"Une erreur est survenue : {v} : Veuillez entrer un nombre")
+            return
+        except Exception as e:
+            print(f"Une erreur est survenue avec Turtle : {e}")
             return
 
     @staticmethod
@@ -88,6 +103,9 @@ class Sqaure:
                 return
         except ValueError as v:
             print(f"Une erreur est survenue : {v} : Veuillez entrer un nombre")
+            return
+        except Exception as e:
+            print(f"Une erreur est survenue avec Turtle : {e}")
             return
 
     @staticmethod 
@@ -109,6 +127,9 @@ class Sqaure:
         except ValueError as v:
             print(f"Une erreur est survenue : {v} : Veuillez entrer un nombre")
             return
+        except Exception as e:
+            print(f"Une erreur est survenue avec Turtle : {e}")
+            return
     
     @staticmethod
     def square_color(a):
@@ -128,7 +149,9 @@ class Sqaure:
         except ValueError as v:
             print(f"Une erreur est survenue : {v} : Veuillez entrer un nombre")
             return
-
+        except Exception as e:
+            print(f"Une erreur est survenue avec Turtle : {e}")
+            return
 
 class Figures:
     @staticmethod
@@ -144,6 +167,9 @@ class Figures:
         except ValueError as v:
             print(f"Une erreur est survenue : {v} : Veuillez entrer un nombre")
             return
+        except Exception as e:
+            print(f"Une erreur est survenue avec Turtle : {e}")
+            return
 
     @staticmethod    
     def polygone(a, n):
@@ -157,6 +183,9 @@ class Figures:
             return
         except ValueError as v:
             print(f"Une erreur est survenue : {v}. Veuillez entrer des valeurs numériques correctes.")
+            return
+        except Exception as e:
+            print(f"Une erreur est survenue avec Turtle : {e}")
             return
 
     @staticmethod
@@ -176,6 +205,9 @@ class Figures:
         except ValueError as v:
             print(f"Une erreur est survenue : {v}. Veuillez entrer des valeurs numériques correctes.")
             return
+        except Exception as e:
+            print(f"Une erreur est survenue avec Turtle : {e}")
+            return
         
 
 class CursorMover:
@@ -186,6 +218,9 @@ class CursorMover:
             return
         except Exception as e:
             print(f"Une erreur est survenue lors de la réinitialisation de la page : {e}")
+            return
+        except Exception as e:
+            print(f"Une erreur est survenue avec Turtle : {e}")
             return
 
     @staticmethod
@@ -200,6 +235,9 @@ class CursorMover:
             return
         except Exception as e:
             print(f"Une erreur est survenue lors du déplacement du curseur : {e}")
+            return
+        except Exception as e:
+            print(f"Une erreur est survenue avec Turtle : {e}")
             return
 
 
@@ -217,6 +255,9 @@ class Radius:
             return
         except ValueError as v:
             print(f"Une erreur est survenue : {v}. Veuillez entrer des valeurs numériques correctes.")
+            return
+        except Exception as e:
+            print(f"Une erreur est survenue avec Turtle : {e}")
             return
 
 speed(100)
