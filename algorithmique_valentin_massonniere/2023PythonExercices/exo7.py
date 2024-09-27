@@ -48,9 +48,9 @@ def replace_date_file(file_url, header, filled_data):
     try:
         workbook = xlsxwriter.Workbook(file_url)
         worksheet = workbook.add_worksheet()
-        bold = workbook.add_format({"bold": True})
-        worksheet.write(header)
-        worksheet.write(filled_data)
+        worksheet.write("A1","oui")
+        # worksheet.write(filled_data)
+        workbook.close()
     except Exception as e:
         print(f"Une erreur est survenue : {e}")
 
