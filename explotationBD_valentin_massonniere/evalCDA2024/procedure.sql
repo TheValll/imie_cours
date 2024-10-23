@@ -10,7 +10,7 @@ select r.* from responsable r inner join materiel m on r.id = m.id_Responsable w
 
 select m.nom, r.nom from responsable r inner join materiel m on r.id = m.id_Responsable group by m.nom;
 
-select nom, count(nom) from materiel group by id_Fabricant;
+select f.nom, count(m.nom) from materiel m inner join fabricant f on m.id_fabricant = f.id group by f.nom;
 
 select r.nom, m.nom, m.dateInstallation, f.nom from responsable r inner join materiel m on r.id = m.id_Responsable inner join fabricant f on f.id = m.id_Fabricant;
 
