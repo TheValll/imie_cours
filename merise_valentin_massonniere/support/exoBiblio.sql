@@ -71,22 +71,43 @@ CREATE TABLE Livre(
 #------------------------------------------------------------
 
 CREATE TABLE Emprunt(
-        id_emprunt   Int  Auto_increment  NOT NULL ,
-        date_emprunt Date NOT NULL
+        id_emprunt         Int  Auto_increment  NOT NULL ,
+        date_emprunt       Date NOT NULL ,
+        quantite_emprunter Int NOT NULL ,
+        id_adherent        Int NOT NULL ,
+        id_collection      Int NOT NULL
 	,CONSTRAINT Emprunt_PK PRIMARY KEY (id_emprunt)
+
+	,CONSTRAINT Emprunt_Adherent_FK FOREIGN KEY (id_adherent) REFERENCES Adherent(id_adherent)
+	,CONSTRAINT Emprunt_Collection0_FK FOREIGN KEY (id_collection) REFERENCES Collection(id_collection)
 )ENGINE=InnoDB;
 
+
 #------------------------------------------------------------
-# Table: Emprunter
+# Table: Ecrire
 #------------------------------------------------------------
 
-CREATE TABLE DemandeEmprunt(
-        id_emprunt              Int NOT NULL ,
-        id_adherent             Int NOT NULL ,
+CREATE TABLE Ecrire(
+        id_livre  Int NOT NULL ,
+        id_auteur Int NOT NULL
+	,CONSTRAINT Ecrire_PK PRIMARY KEY (id_livre,id_auteur)
+
+	,CONSTRAINT Ecrire_Livre_FK FOREIGN KEY (id_livre) REFERENCES Livre(id_livre)
+	,CONSTRAINT Ecrire_Auteur0_FK FOREIGN KEY (id_auteur) REFERENCES Auteur(id_auteur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Posseder
+#------------------------------------------------------------
+
+CREATE TABLE Posseder(
+        id_collection           Int NOT NULL ,
+        id_livre                Int NOT NULL ,
         nombre_exemplaire_livre Int NOT NULL
-	,CONSTRAINT Emprunter_PK PRIMARY KEY (id_emprunt,id_adherent)
+	,CONSTRAINT Posseder_PK PRIMARY KEY (id_collection,id_livre)
 
-	,CONSTRAINT Emprunter_Emprunt_FK FOREIGN KEY (id_emprunt) REFERENCES Emprunt(id_emprunt)
-	,CONSTRAINT Emprunter_Adherent0_FK FOREIGN KEY (id_adherent) REFERENCES Adherent(id_adherent)
+	,CONSTRAINT Posseder_Collection_FK FOREIGN KEY (id_collection) REFERENCES Collection(id_collection)
+	,CONSTRAINT Posseder_Livre0_FK FOREIGN KEY (id_livre) REFERENCES Livre(id_livre)
 )ENGINE=InnoDB;
 

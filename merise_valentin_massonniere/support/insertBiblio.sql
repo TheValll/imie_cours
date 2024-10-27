@@ -19,3 +19,4 @@ insert into `Emprunt` (`id_emprunt`, `date_emprunt`) values (001, '15/01/2020')
 insert into `Emprunt` (`id_emprunt`, `date_emprunt`) values (002, '19/01/2020')
 
 insert into `Emprunt` (`id_emprunt`, `date_emprunt`) values (007, '22/01/2020')
+
