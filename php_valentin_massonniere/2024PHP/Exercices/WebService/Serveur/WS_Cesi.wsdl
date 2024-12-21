@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!-- partie 1 : Definitions -->
+<definitions    name="WS_Cesi" 
+                targetNamespace="urn:WS_Cesi" 
+                xmlns:typens="urn:WS_Cesi" 
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+                xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+                xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+                xmlns="http://schemas.xmlsoap.org/wsdl/">
+ 
+        <!-- partie 2 : Types-->
+	<types>
+        <xsd:schema     xmlns="http://www.w3.org/2001/XMLSchema" 
+                        targetNamespace="urn:WS_Cesi">
+        </xsd:schema>
+	</types> 
+ 
+ 
+        <!-- partie 3 : Message 1-->
+        
+        <message name="addNewRequest">
+                <part name="prenom" type="xsd:string"/>
+                <part name="nom" type="xsd:string"/>
+        </message>
+        <message name="addNewResponse">
+                <part name="return" type="xsd:string"/>
+        </message>
+		
+		<!-- partie 3 : Message 2-->
+		
+		<message name="displayDataFromDataBaseRequest">
+                <part name="critere" type="xsd:string"/>
+        </message>
+        <message name="displayDataFromDataBaseResponse">
+                <part name="return" type="soap-enc:Array"/>
+        </message>
+        
+        
+        <!-- partie 4 : Port Type -->
+        <portType name="WS_CesiPort">
+                <!-- partie 5 : Operation 1-->
+                <operation name="addNew">
+                        <input message="typens:addNewRequest"/>
+                        <output message="typens:addNewResponse"/>
+                </operation>
+                
+                <!-- partie 5 : Operation 1-->
+                <operation name="displayDataFromDataBase">
+                        <input message="typens:displayDataFromDataBaseRequest"/>
+                        <output message="typens:displayDataFromDataBaseResponse"/>
+                </operation>
+                
+        </portType>
+ 
+        <!-- partie 6 : Binding -->
+        <binding name="WS_CesiBinding" type="typens:WS_CesiPort">
+                <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+                <operation name="addNew">
+                        <soap:operation soapAction="WS_CesiAction"/>
+                        <input name="addNewRequest">
+                                <soap:body      use="encoded"   
+                                                namespace="urn:WS_Cesi"        
+                                                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+                        </input>
+                        <output name="addNewResponse">
+                                <soap:body      use="encoded"   
+                                                namespace="urn:WS_Cesi" 
+                                                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+                        </output>
+                </operation>
+                
+                <operation name="displayDataFromDataBase">
+                        <soap:operation soapAction="WS_CesiAction"/>
+                        <input name="displayDataFromDataBaseRequest">
+                                <soap:body      use="encoded"   
+                                                namespace="urn:WS_Cesi"        
+                                                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+                        </input>
+                        <output name="displayDataFromDataBaseResponse">
+                                <soap:body      use="encoded"   
+                                                namespace="urn:WS_Cesi" 
+                                                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+                        </output>
+                </operation>
+                
+        </binding>
+     
+        <!-- partie 7 : Service -->
+        
+        <service name="WS_CesiService">
+                <documentation>Retourne une phrase simple </documentation>
+                <!-- partie 8 : Port -->
+                <port name="WS_CesiPort" binding="typens:WS_CesiBinding">
+                        <soap:address location="http://localhost/WebService/Serveur/server.php"/>
+                </port>
+        </service>
+</definitions>

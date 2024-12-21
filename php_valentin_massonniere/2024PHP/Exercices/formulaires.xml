@@ -1,0 +1,45 @@
+<?xml version='1.0'?> 
+<formulaires>
+  <formulaire name="Enregistrement">
+    <titre>Enregistrez vous !</titre>
+    <controle>
+        <type>text</type>
+        <label>Nom :</label>
+        <name>name</name>
+        <value>votre nom</value>
+    </controle>
+    <controle>
+        <type>text</type>
+        <label>Prénom :</label>
+        <name>firstname</name>
+        <value>votre prénom</value>
+    </controle>
+    <controle>
+        <type>submit</type>
+       <label>Valider</label>
+        <name></name>
+        <value>Valider</value>
+    </controle>
+  </formulaire>
+  <formulaire name="AvecCheckbox">
+    <titre>test avec Checkbox</titre>
+    <controle>
+        <type>checkbox</type>
+        <label>J'ai une voiture</label>
+        <name>voiture</name>
+        <value>yes</value>
+    </controle>
+    <controle>
+        <type>checkbox</type>
+        <label>J'ai un vélo</label>
+        <name>velo</name>
+        <value>yes</value>
+    </controle>
+    <controle>
+        <type>submit</type>
+        <label>Valider</label>
+        <name></name>
+        <value>Valider</value>
+    </controle>
+  </formulaire>
+</formulaires>

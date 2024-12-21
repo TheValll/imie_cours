@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2024-12-15" view-index="0" gantt-divider-location="604" resource-divider-location="300" version="3.3.3313" locale="en_US">
+    <description/>
+    <view zooming-state="default:6" id="gantt-chart">
+        <field id="tpd15" name="Notes" width="20" order="0"/>
+        <field id="tpd3" name="Name" width="213" order="0"/>
+        <field id="tpd4" name="Begin date" width="80" order="1"/>
+        <field id="tpd5" name="End date" width="83" order="2"/>
+        <field id="tpd6" name="Duration" width="45" order="3"/>
+        <field id="tpd10" name="ID" width="30" order="4"/>
+        <field id="tpd9" name="Predecessors" width="152" order="5"/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="filter.dueTodayTasks" value="false"/>
+        <option id="filter.overdueTasks" value="false"/>
+        <option id="filter.inProgressTodayTasks" value="false"/>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars base-id="fr">
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+        <date year="" month="1" date="1" type="HOLIDAY"><![CDATA[1er janvier]]></date>
+        <date year="" month="5" date="1" type="HOLIDAY"><![CDATA[1er mai]]></date>
+        <date year="" month="5" date="8" type="HOLIDAY"><![CDATA[8 mai]]></date>
+        <date year="" month="7" date="14" type="HOLIDAY"><![CDATA[14 juillet]]></date>
+        <date year="" month="8" date="15" type="HOLIDAY"><![CDATA[Assomption]]></date>
+        <date year="" month="11" date="1" type="HOLIDAY"><![CDATA[Toussaint]]></date>
+        <date year="" month="11" date="11" type="HOLIDAY"><![CDATA[11 novembre]]></date>
+        <date year="" month="12" date="25" type="HOLIDAY"><![CDATA[Jour de Noël]]></date>
+        <date year="2015" month="4" date="6" type="HOLIDAY"><![CDATA[Lundi de Pâques]]></date>
+        <date year="2015" month="5" date="14" type="HOLIDAY"><![CDATA[Ascension]]></date>
+        <date year="2015" month="5" date="25" type="HOLIDAY"><![CDATA[Lundi de Pentecôte]]></date>
+        <date year="2016" month="3" date="28" type="HOLIDAY"><![CDATA[Lundi de Pâques]]></date>
+        <date year="2016" month="5" date="5" type="HOLIDAY"><![CDATA[Ascension]]></date>
+        <date year="2016" month="5" date="16" type="HOLIDAY"><![CDATA[Lundi de Pentecôte]]></date>
+        <date year="2017" month="4" date="17" type="HOLIDAY"><![CDATA[Lundi de Pâques]]></date>
+        <date year="2017" month="5" date="25" type="HOLIDAY"><![CDATA[Ascension]]></date>
+        <date year="2017" month="6" date="5" type="HOLIDAY"><![CDATA[Lundi de Pentecôte]]></date>
+        <date year="2018" month="4" date="2" type="HOLIDAY"><![CDATA[Lundi de Pâques]]></date>
+        <date year="2018" month="5" date="10" type="HOLIDAY"><![CDATA[Ascension]]></date>
+        <date year="2018" month="5" date="21" type="HOLIDAY"><![CDATA[Lundi de Pentecôte]]></date>
+        <date year="2019" month="4" date="22" type="HOLIDAY"><![CDATA[Lundi de Pâques]]></date>
+        <date year="2019" month="5" date="30" type="HOLIDAY"><![CDATA[Ascension]]></date>
+        <date year="2019" month="6" date="10" type="HOLIDAY"><![CDATA[Lundi de Pentecôte]]></date>
+        <date year="2020" month="4" date="13" type="HOLIDAY"><![CDATA[Lundi de Pâques]]></date>
+        <date year="2020" month="5" date="21" type="HOLIDAY"><![CDATA[Ascension]]></date>
+        <date year="2020" month="6" date="1" type="HOLIDAY"><![CDATA[Lundi de Pentecôte]]></date>
+        <date year="2021" month="4" date="5" type="HOLIDAY"><![CDATA[Lundi de Pâques]]></date>
+        <date year="2021" month="5" date="13" type="HOLIDAY"><![CDATA[Ascension]]></date>
+        <date year="2021" month="5" date="24" type="HOLIDAY"><![CDATA[Lundi de Pentecôte]]></date>
+        <date year="2022" month="4" date="18" type="HOLIDAY"><![CDATA[Lundi de Pâques]]></date>
+        <date year="2022" month="5" date="26" type="HOLIDAY"><![CDATA[Ascension]]></date>
+        <date year="2022" month="6" date="6" type="HOLIDAY"><![CDATA[Lundi de Pentecôte]]></date>
+        <date year="2023" month="4" date="10" type="HOLIDAY"><![CDATA[Lundi de Pâques]]></date>
+        <date year="2023" month="5" date="18" type="HOLIDAY"><![CDATA[Ascension]]></date>
+        <date year="2023" month="5" date="29" type="HOLIDAY"><![CDATA[Lundi de Pentecôte]]></date>
+        <date year="2024" month="4" date="1" type="HOLIDAY"><![CDATA[Lundi de Pâques]]></date>
+        <date year="2024" month="5" date="9" type="HOLIDAY"><![CDATA[Ascension]]></date>
+        <date year="2024" month="5" date="20" type="HOLIDAY"><![CDATA[Lundi de Pentecôte]]></date>
+        <date year="2025" month="4" date="21" type="HOLIDAY"><![CDATA[Lundi de Pâques]]></date>
+        <date year="2025" month="5" date="29" type="HOLIDAY"><![CDATA[Ascension]]></date>
+        <date year="2025" month="6" date="9" type="HOLIDAY"><![CDATA[Lundi de Pentecôte]]></date>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="10" uid="b6ebeb2fc90e41b2aed554720871970b" name="Project" meeting="false" start="2024-12-20" duration="28" complete="0" expand="true">
+            <task id="0" uid="6135f20e1ec840efaa1f5b514b43fd03" name="A" meeting="false" start="2024-12-20" duration="10" complete="0" expand="true">
+                <depend id="2" type="2" difference="0" hardness="Strong"/>
+                <depend id="3" type="2" difference="0" hardness="Strong"/>
+                <depend id="4" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="1" uid="6e3f2c8b94ab4290ba2553fcfac8c93f" name="B" meeting="false" start="2024-12-20" duration="10" complete="0" expand="true">
+                <depend id="4" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="2" uid="c4abfe4cbcb247638fdb76592ea26fcc" name="C" meeting="false" start="2025-01-07" duration="6" complete="0" expand="true">
+                <depend id="5" type="2" difference="0" hardness="Strong"/>
+                <depend id="6" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="3" uid="18207988f412467db3c0e836992814cb" name="D" meeting="false" start="2025-01-07" duration="6" complete="0" expand="true">
+                <depend id="6" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="4" uid="31dca3f88c7f4d2eae601aed96dfd985" name="E" meeting="false" start="2025-01-07" duration="6" complete="0" expand="true">
+                <depend id="6" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="5" uid="9891e4acc99944d19110e0b76e1be884" name="F" meeting="false" start="2025-01-15" duration="10" complete="0" expand="true">
+                <depend id="9" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="6" uid="7785afd6509742b7b55aec6be97c96f8" name="G" meeting="false" start="2025-01-15" duration="3" complete="0" expand="true">
+                <depend id="9" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="7" uid="2db249dcb9d2482baa2fceadc50b128e" name="H" meeting="false" start="2024-12-20" duration="5" complete="0" expand="true">
+                <depend id="8" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="8" uid="b162561778d54e0897cdb9bc5f0bb6c0" name="I" meeting="false" start="2024-12-30" duration="8" complete="0" expand="true">
+                <depend id="9" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="9" uid="67dac68ca8c0496cad1462ebca99334a" name="J" meeting="false" start="2025-01-29" duration="2" complete="0" expand="true"/>
+        </task>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>

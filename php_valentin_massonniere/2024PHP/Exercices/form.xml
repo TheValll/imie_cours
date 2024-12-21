@@ -1,0 +1,8 @@
+<FormBuilder method="get" name="Identifiez vous">
+    <FormInputEntity type="text" label="Nom" name="nom" value="Votre nom" />
+    <FormInputEntity type="list" label="Prénom" name="prenom" value="Votre prénom" >
+        <Option value="france" text="France" />
+        <Option value="canada" text="Canada" />
+    </FormInputEntity>
+    <FormInputEntity type="submit" label="" name="valider" value="Valider" />
+</FormBuilder>
