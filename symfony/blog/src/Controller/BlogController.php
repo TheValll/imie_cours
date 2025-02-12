@@ -20,9 +20,16 @@ final class BlogController extends AbstractController
     public function home(): Response
     {
         return $this->render('blog/home.html.twig',[
-        'title'=>"Utilisation d'une variable",
-        'age'=>27
-        ] );
+            'title' => "Utilisation d'une variable",
+            'age' => 27
+        ]);
+    }
+
+    #[Route('/blog/{id}', name: 'blog_show')]
+    public function show(int $id): Response
+    {
+        return $this->render('blog/show.html.twig', [
+            'id' => $id,
+        ]);
     }
 }
-
