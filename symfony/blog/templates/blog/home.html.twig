@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block body %}
+    <h1>Home Page</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit iste voluptate exercitationem, consectetur eligendi corporis porro odit repellendus tempora dicta hic quidem error, mollitia qui quia. Exercitationem adipisci, eius illo assumenda nihil laboriosam possimus nulla amet blanditiis accusantium. Nam, tempora.</p>
+
+    <h2>{{ title }}</h2>
+    {% if age > 18 %}
+        <p>Tu es Majeur</p>
+    {% else %}
+        <p>Tu es Mineur</p>
+    {% endif %}
+{% endblock %}
