@@ -10,13 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArticleRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 final class BlogController extends AbstractController
 {
     #[Route('/blog', name: 'app_blog')]
     public function index(ArticleRepository $repo): Response
     {
-        // $repo = $doctrine->getRepository(Article::class);
         $articles = $repo->findAll();
         return $this->render('blog/index.html.twig', [
             'controller_name' => 'BlogController',
@@ -34,33 +34,36 @@ final class BlogController extends AbstractController
     }
 
     #[Route('/blog/new', name: 'blog_create')]
-    public function create(Request $request, ManagerRegistry $doctrine
-    )
+    public function create(Request $request, ManagerRegistry $doctrine)
     {
-    dump($request);
-    if ($request->request->count() > 0 )
-    { // retour de formulaire
-    $article = new Article();
-    $article->setTitle($request->request->get('title'))
-    ->setContent($request->request->get('content'))
-    ->setImage($request->request->get('image'))
-    ->setCreateAt(new \DateTime());
-    $manager = $doctrine->getManager();
-    $manager->persist($article);
-    $manager->flush();
-    return $this->redirectToRoute('blog_show', ['id' => $article-> getId()]);
+        $manager = $doctrine->getManager();
+        $article = new Article();
+        $form = $this->createFormBuilder($article)
+        ->add('title')
+        ->add('content')
+        ->add('image')
+        ->getForm();
+        $form->handleRequest($request);
+        dump($article);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $article->setCreateAt(new \DateTime());
+            $manager->persist($article);
+            $manager->flush();
+            return $this->redirectToRoute('blog_show', ['id' => $article-> getId()]);
+        }
+        return $this->render('blog/create.html.twig', [
+        'formArticle' => $form->createView()
+        ]);
     }
-    return $this->render('blog/create.html.twig');
-    }
+    
 
     #[Route('/blog/{id}', name: 'blog_show')]
     public function show(ArticleRepository $repo, $id)
     {
-    // $repo = $doctrine->getRepository(Article::class);
-    $article = $repo->find($id);
-    return $this->render('blog/show.html.twig',[
-    'article' => $article
-    ]);
+        $article = $repo->find($id);
+        return $this->render('blog/show.html.twig', [
+            'article' => $article
+        ]);
     }
-
 }

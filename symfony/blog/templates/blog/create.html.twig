@@ -1,23 +1,11 @@
 {% extends 'base.html.twig' %}
-
+{% form_theme formArticle 'bootstrap_4_layout.html.twig' %}
 {% block body %}
 <h1>Création d'un article</h1>
-
-<form action="{{ path('blog_create') }}" method="post">
-    <div>
-        <label for="title">Titre</label>
-        <input type="text" id="title" name="title" placeholder="Titre" required>
-    </div>
-    <div>
-        <label for="content">Contenu</label>
-        <textarea id="content" name="content" placeholder="Contenu" required></textarea>
-    </div>
-    <div>
-        <label for="image">Image</label>
-        <input type="text" id="image" name="image" placeholder="Image">
-    </div>
-    <div>
-        <input type="submit" value="Soumettre">
-    </div>
-</form>
+{{form_start(formArticle)}}
+{{form_row(formArticle.title, {'attr':{'placeholder' : "Titre de l'article"},'label':'Titre'})}}
+{{form_row(formArticle.content, {'attr':{'placeholder' : "Contenu del'article"},'label':'Contenu'})}}
+{{form_row(formArticle.image, {'attr':{'placeholder' : "URL del'image"}})}}
+<button type="submit">Ajouter</button>
+{{form_end(formArticle)}}
 {% endblock %}
