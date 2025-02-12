@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Création d'un article</h1>
+
+<form action="{{ path('blog_create') }}" method="post">
+    <div>
+        <label for="title">Titre</label>
+        <input type="text" id="title" name="title" placeholder="Titre" required>
+    </div>
+    <div>
+        <label for="content">Contenu</label>
+        <textarea id="content" name="content" placeholder="Contenu" required></textarea>
+    </div>
+    <div>
+        <label for="image">Image</label>
+        <input type="text" id="image" name="image" placeholder="Image">
+    </div>
+    <div>
+        <input type="submit" value="Soumettre">
+    </div>
+</form>
+{% endblock %}
