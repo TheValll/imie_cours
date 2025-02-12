@@ -4,52 +4,18 @@
 
 {% block body %}
 <section class="articles">
-    <div class="article">
-        <h2>Titre de l’article</h2>
-        <div class="metadata">
-        rédigé le 10/10/2019
-            <div class="content">
-                <img src="https://picsum.photos/200/300" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dolorem aut, cum modi at praesentium adipisci explicabo nemo tenetur accusantium.</p>
-
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dolorem aut, cum modi at praesentium adipisci explicabo nemo tenetur accusantium.</p>
-
-                <a href="{{ path('blog_show')}}" class="btn btn-primary">Détail de l’article</a>
-
-            </div>
-        </div>
-    </div>
-
-        <div class="article">
-        <h2>Titre de l’article</h2>
-        <div class="metadata">
-        rédigé le 10/10/2019
-            <div class="content">
-                <img src="https://picsum.photos/200/300" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dolorem aut, cum modi at praesentium adipisci explicabo nemo tenetur accusantium.</p>
-
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dolorem aut, cum modi at praesentium adipisci explicabo nemo tenetur accusantium.</p>
-
-                <a href="{{ path('blog_show')}}" class="btn btn-primary">Détail de l’article</a>
-
-            </div>
-        </div>
-    </div>
-
-        <div class="article">
-        <h2>Titre de l’article</h2>
-        <div class="metadata">
-        rédigé le 10/10/2019
-            <div class="content">
-                <img src="https://picsum.photos/200/300" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dolorem aut, cum modi at praesentium adipisci explicabo nemo tenetur accusantium.</p>
-
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dolorem aut, cum modi at praesentium adipisci explicabo nemo tenetur accusantium.</p>
-
-                <a href="{{ path('blog_show')}}" class="btn btn-primary">Détail de l’article</a>
-
-            </div>
-        </div>
-    </div>
+{% for article in articles%}
+<article>
+<h2>{{article.title}}</h2>
+<div class="metadata">rédigé le {{article.createAt |
+date('d/m/Y')}} à {{article.createAt | date('H:i')}}</div>
+<div class="content">
+<img src="{{article.image}}" alt="image">
+{{article.content | raw}}
+<a href="{{ path('blog_show', {'id':article.id})}}"
+class="btn btn-primary">Lire la suite</a>
+</div>
+</article>
+{% endfor %}
 </section>
 {% endblock %}
