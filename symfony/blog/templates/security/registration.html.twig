@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+<h1>Inscription sur ce site</h1>
+
+{{ form_start(form) }}
+    {{ form_row(form.username, {'attr': {'placeholder': 'Votre nom ...'}, 'label': 'Nom', 'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.email, {'attr': {'placeholder': 'Votre mail'}, 'label': 'e-Mail', 'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.password, {'attr': {'placeholder': 'Mot de passe'}, 'label': 'Mot de passe', 'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.confirm_password, {'attr': {'placeholder': 'Confirmation mot de passe'}, 'label': 'Confirmation mot de passe', 'attr': {'class': 'form-control'}}) }}
+    <button type="submit" class="btn btn-success">Inscription</button>
+{{ form_end(form) }}
+{% endblock %}

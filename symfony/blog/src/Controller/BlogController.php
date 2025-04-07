@@ -9,8 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArticleRepository;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use App\Form\ArticleType;
 
 final class BlogController extends AbstractController
 {
@@ -34,29 +33,34 @@ final class BlogController extends AbstractController
     }
 
     #[Route('/blog/new', name: 'blog_create')]
-    public function create(Request $request, ManagerRegistry $doctrine)
+    #[Route('/blog/{id}/edit', name: 'blog_edit')]
+    public function createModify(Article $article = null, Request $request, ManagerRegistry $doctrine)
     {
-        $manager = $doctrine->getManager();
-        $article = new Article();
-        $form = $this->createFormBuilder($article)
-        ->add('title')
-        ->add('content')
-        ->add('image')
-        ->getForm();
+        if (!$article) {
+            $article = new Article();
+        }
+        $form = $this->createForm(ArticleType::class, $article);
+        
         $form->handleRequest($request);
+
         dump($article);
-        if ($form->isSubmitted() && $form->isValid())
-        {
-            $article->setCreateAt(new \DateTime());
+        if ($form->isSubmitted() && $form->isValid()) {
+            if (!$article->getId()) {
+                $article->setCreateAt(new \DateTime());
+            }
+
+            $manager = $doctrine->getManager();
             $manager->persist($article);
             $manager->flush();
-            return $this->redirectToRoute('blog_show', ['id' => $article-> getId()]);
+
+            return $this->redirectToRoute('blog_show', ['id' => $article->getId()]);
         }
+
         return $this->render('blog/create.html.twig', [
-        'formArticle' => $form->createView()
+            'formArticle' => $form->createView(),
+            'editMode' => $article->getId() !== null
         ]);
     }
-    
 
     #[Route('/blog/{id}', name: 'blog_show')]
     public function show(ArticleRepository $repo, $id)
