@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.imie.fx.Page2Controller">
+   <TextArea fx:id="txtInput" prefHeight="150" prefWidth="300" />
+   <Button fx:id="btnAction" onAction="#OnAction" text="Action" />
+</VBox>
