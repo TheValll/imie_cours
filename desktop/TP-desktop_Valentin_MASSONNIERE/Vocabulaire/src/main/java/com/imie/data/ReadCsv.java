@@ -1,4 +1,4 @@
-package com.imie.vocabulaire;
+package com.imie.data;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -26,15 +26,18 @@ public class ReadCsv {
                 }
             }
 
-            if (!language1Words.isEmpty()) {
-                randomWords.add(language1Words.remove(0));
-                language2Good.add(language2Words.remove(0));
+            List<String> tempLanguage1Words = new ArrayList<>(language1Words);
+            List<String> tempLanguage2Words = new ArrayList<>(language2Words);
+
+            if (!tempLanguage1Words.isEmpty()) {
+                randomWords.add(tempLanguage1Words.remove(0));
+                language2Good.add(tempLanguage2Words.remove(0));
 
                 Random random = new Random();
-                while (randomWords.size() < 5 && !language1Words.isEmpty()) {
-                    int index = random.nextInt(language1Words.size());
-                    randomWords.add(language1Words.remove(index));
-                    language2Good.add(language2Words.remove(index));
+                while (randomWords.size() < 15 && !tempLanguage1Words.isEmpty()) {
+                    int index = random.nextInt(tempLanguage1Words.size());
+                    randomWords.add(tempLanguage1Words.remove(index));
+                    language2Good.add(tempLanguage2Words.remove(index));
                 }
             }
         } catch (IOException e) {

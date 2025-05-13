@@ -8,4 +8,6 @@ module com.imie.vocabulaire {
 
     opens com.imie.vocabulaire to javafx.fxml;
     exports com.imie.vocabulaire;
+    exports com.imie.data;
+    opens com.imie.data to javafx.fxml;
 }
