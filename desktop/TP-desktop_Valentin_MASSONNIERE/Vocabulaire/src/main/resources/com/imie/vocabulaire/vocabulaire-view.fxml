@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -10,23 +11,41 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button fx:id="openFile" mnemonicParsing="false" onAction="#handleOpenFIle" text="Open file" />
-                  <Button fx:id="readScore" mnemonicParsing="false" text="Read score" />
+                  <Button fx:id="openFile" mnemonicParsing="false" onAction="#handleOpenFIle" text="Open file">
+                     <styleClass>
+                        <String fx:value="btn-primary" />
+                        <String fx:value="btn" />
+                     </styleClass></Button>
+                  <Button fx:id="readScore" mnemonicParsing="false" onAction="#handleReadScore" text="Read score">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-primary" />
+                     </styleClass></Button>
+                  <Button fx:id="btnReplay" mnemonicParsing="false" onAction="#handleReplay" text="Replay">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-primary" />
+                     </styleClass>
+                  </Button>
                </children>
                <padding>
-                  <Insets bottom="15.0" />
+                  <Insets bottom="15.0" left="5.0" top="5.0" />
                </padding>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <TextField promptText="First name" />
-                  <TextField promptText="Last name" />
+                  <TextField fx:id="firstName" promptText="First name" />
+                  <TextField fx:id="lastName" promptText="Last name" />
                </children>
                <padding>
                   <Insets bottom="10.0" />
                </padding>
             </HBox>
-            <Button mnemonicParsing="false" text="Check traduction" />
+            <Button fx:id="btnCheck" mnemonicParsing="false" onAction="#handleCheckTraduction" text="Check traduction">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-primary" />
+               </styleClass></Button>
          </children>
          <padding>
             <Insets bottom="10.0" />
@@ -36,8 +55,8 @@
    <center>
       <TableView fx:id="languageView" prefHeight="300.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="firstNameColumn" editable="false" prefWidth="75.0" sortable="false" text="Langue 1" />
-          <TableColumn fx:id="secondNameColumn" editable="false" prefWidth="75.0" sortable="false" text="Langue 2" />
+          <TableColumn fx:id="firstNameColumn" editable="false" prefWidth="75.0" sortable="false" text="Language 1" />
+          <TableColumn fx:id="secondNameColumn" editable="false" prefWidth="75.0" sortable="false" text="Language 2" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

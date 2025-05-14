@@ -1,6 +1,7 @@
 package com.imie.vocabulaire;
 
 import com.imie.data.ReadCsv;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,7 +26,10 @@ public class VocabulaireController {
     private Button openFile;
 
     @FXML
-    private Button readScore;
+    private TextField firstName;
+
+    @FXML
+    private TextField lastName;
 
     @FXML
     public void updateTableView(ReadCsv.WordPair wordPair){
@@ -33,12 +37,12 @@ public class VocabulaireController {
         List<String> language2Words = wordPair.language2Words();
         List<String> language2Good = wordPair.language2Good();
 
-        ObservableList<String> language2GoodObservables = FXCollections.observableArrayList(language2Words);
+        ObservableList<String> language2GoodObservables = FXCollections.observableArrayList(language2Words.subList(1, language2Words.size()));
         languageView.getItems().clear();
 
         firstNameColumn.setText(randomLanguage1Words.getFirst());
         secondNameColumn.setText(language2Good.getFirst());
-        firstNameColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getWord()));
+        firstNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getWord()));
 
         secondNameColumn.setCellFactory(col -> {
             return new TableCell<WordChoicePair, String>() {
@@ -110,5 +114,37 @@ public class VocabulaireController {
             ReadCsv.WordPair wordPair = ReadCsv.getLanguageWords(selectedFile.getAbsolutePath());
             updateTableView(wordPair);
         }
+    }
+
+    @FXML
+    private void handleCheckTraduction() {
+        ObservableList<WordChoicePair> score = languageView.getItems();
+        String userFirstName = firstName.getText();
+        String userLastName = lastName.getText();
+
+        System.out.println("FirstName : " + (userFirstName != null ? userFirstName : " ") + " | LastName : " + (userLastName != null ? userLastName : " "));
+
+        for (WordChoicePair pair : score) {
+            String word = pair.getWord();
+            ChoiceBox<String> choiceBox = pair.getChoiceBox();
+            System.out.println(choiceBox);
+            String selectedChoice = choiceBox.getValue();
+            System.out.println("Index sélectionné: " + choiceBox.getSelectionModel().getSelectedIndex());
+
+            System.out.println("Question : " + word + " | Answer : " + (selectedChoice != null ? selectedChoice : " "));
+        }
+    }
+
+    @FXML
+    private void handleReadScore() {
+    }
+
+    @FXML
+    private void handleReplay(){
+        languageView.getItems().clear();
+        firstName.clear();
+        lastName.clear();
+        firstNameColumn.setText("Language 1");
+        secondNameColumn.setText("Language 2");
     }
 }
