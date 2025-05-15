@@ -5,10 +5,15 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
-
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class VocabulaireController {
@@ -31,11 +36,14 @@ public class VocabulaireController {
     @FXML
     private TextField lastName;
 
-    @FXML
-    public void updateTableView(ReadCsv.WordPair wordPair){
+    private static final List<String> globalSelectedChoices = new ArrayList<>();
+    private static final List<String> globalAnswers = new ArrayList<>();
+
+    public void updateTableView(ReadCsv.WordPair wordPair) {
         List<String> randomLanguage1Words = wordPair.randomLanguage1Words();
         List<String> language2Words = wordPair.language2Words();
         List<String> language2Good = wordPair.language2Good();
+        globalAnswers.addAll(language2Good.subList(1, language2Good.size()));
 
         ObservableList<String> language2GoodObservables = FXCollections.observableArrayList(language2Words.subList(1, language2Words.size()));
         languageView.getItems().clear();
@@ -52,26 +60,30 @@ public class VocabulaireController {
                     if (empty) {
                         setGraphic(null);
                     } else {
+                        WordChoicePair pair = getTableView().getItems().get(getIndex());
                         ChoiceBox<String> choiceBox = new ChoiceBox<>(language2GoodObservables);
-                        choiceBox.getSelectionModel().select(item);
                         choiceBox.setPrefWidth(col.getWidth());
+
+                        if (pair.getChoiceBox().getValue() != null) {
+                            choiceBox.getSelectionModel().select(pair.getChoiceBox().getValue());
+                        }
+
+                        choiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                            pair.setChoiceBox(choiceBox);
+                        });
+
                         setGraphic(choiceBox);
                     }
                 }
             };
         });
 
-
-        for(int i = 1; i < randomLanguage1Words.size(); i++){
+        for (int i = 1; i < randomLanguage1Words.size(); i++) {
             String mot = randomLanguage1Words.get(i);
             ChoiceBox<String> choiceBox = new ChoiceBox<>(language2GoodObservables);
             WordChoicePair pair = new WordChoicePair(mot, choiceBox);
             languageView.getItems().add(pair);
         }
-
-//        System.out.println("Mots aléatoires (Langue 1) : " + randomLanguage1Words);
-//        System.out.println("Mots corrects (Langue 2) : " + language2Good);
-//        System.out.println("Mots (Langue 2) : " + language2Words);
     }
 
     public static class WordChoicePair {
@@ -101,7 +113,7 @@ public class VocabulaireController {
     }
 
     @FXML
-    private void handleOpenFIle(){
+    private void handleOpenFile() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open a CSV file");
 
@@ -117,22 +129,21 @@ public class VocabulaireController {
     }
 
     @FXML
-    private void handleCheckTraduction() {
+    private void handleCheckTraduction() throws IOException {
         ObservableList<WordChoicePair> score = languageView.getItems();
         String userFirstName = firstName.getText();
         String userLastName = lastName.getText();
 
-        System.out.println("FirstName : " + (userFirstName != null ? userFirstName : " ") + " | LastName : " + (userLastName != null ? userLastName : " "));
-
         for (WordChoicePair pair : score) {
             String word = pair.getWord();
             ChoiceBox<String> choiceBox = pair.getChoiceBox();
-            System.out.println(choiceBox);
             String selectedChoice = choiceBox.getValue();
-            System.out.println("Index sélectionné: " + choiceBox.getSelectionModel().getSelectedIndex());
-
-            System.out.println("Question : " + word + " | Answer : " + (selectedChoice != null ? selectedChoice : " "));
+            globalSelectedChoices.add(selectedChoice);
         }
+
+        Integer userScore = ReadCsv.getScore(getGlobalSelectedChoices(), getGlobalAnswers());
+        newWindow(userFirstName, userLastName, userScore);
+        handleReplay();
     }
 
     @FXML
@@ -140,11 +151,33 @@ public class VocabulaireController {
     }
 
     @FXML
-    private void handleReplay(){
+    private void handleReplay() {
         languageView.getItems().clear();
         firstName.clear();
         lastName.clear();
         firstNameColumn.setText("Language 1");
         secondNameColumn.setText("Language 2");
+        globalSelectedChoices.clear();
+        globalAnswers.clear();
+    }
+
+    public static List<String> getGlobalSelectedChoices() {
+        return globalSelectedChoices;
+    }
+
+    public static List<String> getGlobalAnswers() {
+        return globalAnswers;
+    }
+
+    public void newWindow(String str1, String str2, int number) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(VocabulaireApplication.class.getResource("score.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Stage stage = new Stage();
+        stage.setTitle("User Score Page");
+        stage.setScene(scene);
+        ScoreController controller = fxmlLoader.getController();
+        controller.setText(str1,str2, number);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
     }
 }

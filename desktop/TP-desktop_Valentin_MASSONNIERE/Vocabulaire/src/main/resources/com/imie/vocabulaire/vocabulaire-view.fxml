@@ -11,7 +11,7 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button fx:id="openFile" mnemonicParsing="false" onAction="#handleOpenFIle" text="Open file">
+                  <Button fx:id="openFile" mnemonicParsing="false" onAction="#handleOpenFile" text="Open file">
                      <styleClass>
                         <String fx:value="btn-primary" />
                         <String fx:value="btn" />

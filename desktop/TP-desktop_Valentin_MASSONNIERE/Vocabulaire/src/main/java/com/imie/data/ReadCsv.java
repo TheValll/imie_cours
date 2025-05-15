@@ -46,4 +46,23 @@ public class ReadCsv {
 
         return new WordPair(randomWords, language2Words, language2Good);
     }
+
+    public static Integer getScore(List<String> list1, List<String> list2) {
+        Integer finalScore = 0;
+        int size = Math.min(list1.size(), list2.size());
+
+        for (int i = 0; i < size; i++) {
+            String answer1 = list1.get(i);
+            String answer2 = list2.get(i);
+
+            System.out.println(answer1 + " " + answer2);
+
+            if (answer1 != null && answer1.equals(answer2)) {
+                finalScore++;
+            }
+        }
+
+        return finalScore;
+    }
+
 }
